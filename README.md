@@ -7,6 +7,34 @@ L'application est volontairement simple : elle indique si trois longueurs peuven
 L'objectif du TP est la chaîne d'automatisation autour : compilation, tests, packaging,
 construction d'une image Docker et publication sur Docker Hub.
 
+## Le projet en bref
+
+**Le principe :** à chaque build, Jenkins récupère le code sur GitHub, le compile, lance les tests,
+puis, si tout passe, empaquette l'application dans une image Docker publiée sur Docker Hub.
+Aucune étape manuelle : un code qui ne compile pas ou un test qui échoue arrête le pipeline,
+et rien n'est publié.
+
+```
+GitHub ──► Jenkins ──► compile ──► tests ──► jar ──► image Docker ──► Docker Hub
+```
+
+**L'application :** la méthode `Triangle.estValide(a, b, c)` applique l'inégalité triangulaire.
+
+| Côtés     | Résultat | Raison                              |
+|-----------|----------|-------------------------------------|
+| 3, 4, 5   | `true`   | chaque côté < somme des deux autres |
+| 1, 2, 5   | `false`  | 1 + 2 n'est pas > 5                 |
+| -1, 5, 5  | `false`  | un côté négatif                     |
+
+Ces trois cas sont couverts par les tests JUnit de `TriangleTest`.
+
+**Ce que le TP permet de pratiquer :**
+
+- structurer un projet Java avec Maven et écrire des tests unitaires ;
+- décrire un pipeline CI/CD sous forme de code (`Jenkinsfile`) ;
+- conteneuriser une application avec un `Dockerfile` ;
+- gérer des secrets (tokens GitHub et Docker Hub) avec les credentials Jenkins.
+
 ## Structure
 
 ```
