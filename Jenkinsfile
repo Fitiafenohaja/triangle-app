@@ -16,7 +16,7 @@ pipeline {
             steps {
                 git branch: 'main',
                     credentialsId: 'github_credentials',
-                    url: 'https://github.com/fitiafenohajaun/triangle-app.git'
+                    url: 'https://github.com/Fitiafenohaja/triangle-app.git'
             }
         }
 
