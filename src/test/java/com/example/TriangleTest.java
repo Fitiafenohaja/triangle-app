@@ -25,4 +25,14 @@ public class TriangleTest {
             t.estValide(1,2,5)
         );
     }
+
+    @Test
+    void coteNegatifInvalide() {
+
+        Triangle t = new Triangle();
+
+        assertFalse(
+            t.estValide(-1,5,5)
+        );
+    }
 }
